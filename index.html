@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>glow.js - perfume & beauty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <header class="nav">
+      <a href="#" class="logo">&lt;glow.js /&gt;</a>
+      <nav>
+        <a href="#products">products</a>
+        <span>cart [<span id="cart-count">0</span>]</span>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <p class="tag">// beauty, compiled with love</p>
+        <h1>Your beauty routine,<br /><em>coded with care.</em></h1>
+        <a href="#products" class="btn">explore() →</a>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar"><span></span><span></span><span></span></div>
+        <pre id="typing"></pre>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+      <h2>const <em>collection</em> = [ ]</h2>
+      <div class="filters">
+        <button class="filter active" data-cat="all">all</button>
+        <button class="filter" data-cat="perfume">perfumes</button>
+        <button class="filter" data-cat="skincare">skincare</button>
+        <button class="filter" data-cat="makeup">makeup</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>made with &lt;3 &amp; CSS — © 2026</footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
