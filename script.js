@@ -37,6 +37,7 @@ document.querySelectorAll(".filter").forEach((btn) => {
     document.querySelector(".filter.active").classList.remove("active");
     btn.classList.add("active");
     render(btn.dataset.cat);
+        watch();
   });
 });
 
@@ -68,5 +69,21 @@ function type() {
 }
 
 // ===== 6. START =====
+// ===== 7. SCROLL ANIMATIONS =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) entry.target.classList.add("visible");
+  });
+}, { threshold: 0.15 });
+
+function watch() {
+  document.querySelectorAll(".card, .about-card, h2").forEach((el) => {
+    el.classList.add("reveal");
+    observer.observe(el);
+  });
+}
+
+// ===== START =====
 render("all");
+watch();
 type();
