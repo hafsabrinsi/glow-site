@@ -86,7 +86,9 @@ h1 {
   background: var(--ink);
   color: var(--cream);
   border-radius: 999px;
-  transition: transform 0.2s, background 0.2s;
+  transition:
+    transform 0.2s,
+    background 0.2s;
 }
 
 .btn:hover {
@@ -145,7 +147,6 @@ h1 {
 /* ===== 5. PRODUCTS ===== */
 #products {
   padding: 80px 6%;
-  scroll-margin-top: 80px;
 }
 
 h2 {
@@ -187,7 +188,9 @@ h2 {
   background: white;
   border-radius: 20px;
   padding: 16px;
-  transition: transform 0.25s, box-shadow 0.25s;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
 }
 
 .card:hover {
@@ -247,6 +250,31 @@ footer {
   color: #8a7d8f;
 }
 
+/* ===== 6b. ABOUT ===== */
+.about {
+  padding: 80px 6%;
+  scroll-margin-top: 80px;
+}
+.about-card {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 40px;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 20px;
+  line-height: 2;
+  font-size: 0.95rem;
+  box-shadow: 0 20px 60px rgba(214, 112, 139, 0.25);
+}
+.about-card .key {
+  color: var(--pink);
+}
+.closing {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 2rem;
+  margin-top: 16px;
+}
 /* ===== 7. RESPONSIVE (phone) ===== */
 @media (max-width: 768px) {
   .hero {
