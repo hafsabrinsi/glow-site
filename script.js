@@ -1,18 +1,55 @@
 // ===== 1. DATA =====
 const products = [
-  { name: "Rose Runtime", cat: "perfume", price: 420, notes: ["rose", "musk", "vanilla"], color: "#f7c6d0" },
-  { name: "Midnight Bug", cat: "perfume", price: 380, notes: ["oud", "amber"], color: "#c9b6e4" },
-  { name: "Hydrate()", cat: "skincare", price: 190, notes: ["hyaluronic acid"], color: "#bfe3e0" },
-  { name: "Glow Serum v2.0", cat: "skincare", price: 260, notes: ["vitamin C"], color: "#fde2b8" },
-  { name: "Lip.gloss", cat: "makeup", price: 120, notes: ["rosy nude"], color: "#f4a7b9" },
-  { name: "Blush --soft", cat: "makeup", price: 150, notes: ["peach"], color: "#ffd1c1" },
+  {
+    name: "Rose Runtime",
+    cat: "perfume",
+    price: 420,
+    notes: ["rose", "musk", "vanilla"],
+    color: "#f7c6d0",
+  },
+  {
+    name: "Midnight Bug",
+    cat: "perfume",
+    price: 380,
+    notes: ["oud", "amber"],
+    color: "#c9b6e4",
+  },
+  {
+    name: "Hydrate()",
+    cat: "skincare",
+    price: 190,
+    notes: ["hyaluronic acid"],
+    color: "#bfe3e0",
+  },
+  {
+    name: "Glow Serum v2.0",
+    cat: "skincare",
+    price: 260,
+    notes: ["vitamin C"],
+    color: "#fde2b8",
+  },
+  {
+    name: "Lip.gloss",
+    cat: "makeup",
+    price: 120,
+    notes: ["rosy nude"],
+    color: "#f4a7b9",
+  },
+  {
+    name: "Blush --soft",
+    cat: "makeup",
+    price: 150,
+    notes: ["peach"],
+    color: "#ffd1c1",
+  },
 ];
 
 // ===== 2. RENDER PRODUCTS =====
 const grid = document.getElementById("grid");
 
 function render(category) {
-  const list = category === "all" ? products : products.filter((p) => p.cat === category);
+  const list =
+    category === "all" ? products : products.filter((p) => p.cat === category);
 
   grid.innerHTML = list
     .map(
@@ -26,7 +63,7 @@ function render(category) {
         <span>${p.price} MAD</span>
         <button class="add">+ add</button>
       </div>
-    </article>`
+    </article>`,
     )
     .join("");
 }
@@ -37,18 +74,20 @@ document.querySelectorAll(".filter").forEach((btn) => {
     document.querySelector(".filter.active").classList.remove("active");
     btn.classList.add("active");
     render(btn.dataset.cat);
-        watch();
+    watch();
   });
 });
 
 // ===== 4. CART =====
 const cartCount = document.getElementById("cart-count");
-let cart = 0;
+let cart = Number(localStorage.getItem("cart")) || 0;
+cartCount.textContent = cart;
 
 grid.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
     cart++;
     cartCount.textContent = cart;
+    localStorage.setItem("cart", cart);
   }
 });
 
@@ -70,11 +109,14 @@ function type() {
 
 // ===== 6. START =====
 // ===== 7. SCROLL ANIMATIONS =====
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) entry.target.classList.add("visible");
-  });
-}, { threshold: 0.15 });
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  },
+  { threshold: 0.15 },
+);
 
 function watch() {
   document.querySelectorAll(".card, .about-card, h2").forEach((el) => {
